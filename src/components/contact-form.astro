@@ -1,0 +1,48 @@
+<form
+  method="post"
+  class=`
+  flex flex-col gap-2 w-full max-w-[400px]
+  [&>label]:w-full [&>label>*]:w-full
+  `
+>
+  <label for="name">
+    <input
+      type="text"
+      id="name"
+      name="name"
+      placeholder="Name"
+      class="p-2 rounded"
+    />
+  </label>
+  <label for="email">
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="Email"
+      class="p-2 rounded"
+    />
+  </label>
+  <label for="msg">
+    <textarea
+      rows="4"
+      id="msg"
+      name="msg"
+      placeholder="Message"
+      class="resize-none p-2 rounded"></textarea>
+  </label>
+
+  <button
+    type="submit"
+    class="py-4 rounded-md bg-accent text-white transition-transform hover:scale-105"
+  >
+    Send message
+  </button>
+</form>
+
+<script>
+  const $msg = document.querySelector("#msg") as HTMLTextAreaElement | null;
+  if ($msg) {
+    $msg.addEventListener("change", ({ currentTarget }) => {});
+  }
+</script>

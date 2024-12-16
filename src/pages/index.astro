@@ -1,11 +1,122 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Logo from "../components/logo.astro";
+import Title from "../components/title.astro";
+import HeaderAnchor from "../components/header-anchor.astro";
+import Card from "../components/card.astro";
+import ContactForm from "../components/contact-form.astro";
+const SERVICES = [
+  {
+    title: "Web Design",
+    desc: "We made powerfull and functional designs that reflex your brand",
+  },
+  {
+    title: "Frontend Dev",
+    desc: "We implement react and responsive user interfaces",
+  },
+  {
+    title: "Backend Dev",
+    desc: "We build robust APIs and data management systems",
+  },
+  {
+    title: "E-commerce",
+    desc: "We develop secure and easy-to-use online stores",
+  },
+];
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const TESTIMONIES = [
+  {
+    name: "María Gonzáles",
+    bussines: "TechStart",
+    testimony:
+      "Neuro turned our idea into an amazing platform. Highly recommended!",
+  },
+  {
+    name: "Carlos Rodríguez",
+    bussines: "InnovateMX",
+    testimony:
+      "Your team is professional and delivered our project earlier than expected. Excellent work.",
+  },
+];
 ---
 
 <Layout>
-	<Welcome />
+  <section class="max-w-[1200px] mx-auto">
+    <header class="flex flex-row justify-between items-center p-2">
+      <Logo />
+
+      <ul class="flex flex-row items-center">
+        <li>
+          <HeaderAnchor href="#services"> Services </HeaderAnchor>
+        </li>
+        <li>
+          <HeaderAnchor href="#testomonies"> Testomonies </HeaderAnchor>
+        </li>
+        <li>
+          <HeaderAnchor href="#contact"> Contact </HeaderAnchor>
+        </li>
+      </ul>
+    </header>
+
+    <article
+      class="w-full flex flex-col items-center gap-3 bg-accent py-20 text-white"
+    >
+      <h2 class="text-5xl font-bold">Web Development Solutions</h2>
+
+      <span> We transform your thinks into digital reality </span>
+
+      <a
+        href=""
+        class="bg-white px-4 py-2 rounded-md text-accent transition shadow shadow-transparent hover:shadow-white/70 hover:scale-105 active:scale-100"
+      >
+        Start your proyect</a
+      >
+    </article>
+
+    <article
+      class="w-full flex flex-col items-center gap-4 px-8 py-16 bg-black/5"
+    >
+      <Title>Our Services</Title>
+      <div class="flex flex-row items-center gap-4">
+        {
+          SERVICES.map(({ title, desc }) => (
+            <Card>
+              <span class="text-xl font-bold text-accent">{title}</span>
+              <p class="text-sm text-black/70">{desc}</p>
+            </Card>
+          ))
+        }
+      </div>
+    </article>
+
+    <article class="w-full flex flex-col items-center gap-4 px-8 py-16">
+      <Title>Our client says</Title>
+      <div class="flex flex-row items-center gap-4">
+        {
+          TESTIMONIES.map(({ name, bussines, testimony }) => (
+            <Card class="flex flex-col">
+              <h3 class="text-xl text-accent">{name}</h3>
+
+              <small class="text-black/70">{bussines}</small>
+
+              <p>{testimony}</p>
+            </Card>
+          ))
+        }
+      </div>
+    </article>
+
+    <article
+      class="w-full flex flex-col items-center gap-4 px-8 py-16 bg-black/5"
+    >
+      <Title> Contact Us</Title>
+      <ContactForm />
+    </article>
+
+    <footer class="py-12 grid place-items-center bg-accent text-white">
+      <p>
+        © {new Date().getFullYear()} Neuro. All rights reserved.
+      </p>
+    </footer>
+  </section>
 </Layout>

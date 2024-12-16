@@ -1,0 +1,16 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.png";
+---
+
+<h1 class="flex flex-row gap-1 items-center text-2xl font-bold">
+  <Image
+    src={logo}
+    alt="Logotipo Neuro."
+    width={logo.width}
+    height={logo.height}
+    class="aspect-square w-14 h-14"
+  />
+
+  Neuro
+</h1>
